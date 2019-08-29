@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Galeria de fotos desde carpeta</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+
+</style>
+</head>
+
+<body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<div class='container'>
+
+    <div class="row">
+
+            <div id="galeria" class='row'>
+<!-- aca va el contenido de la carpeta -->
+            </div>
+      
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $.getJSON("inc_lee_carpeta.php", function (data) {
+                
+                //buscar cantidad de items en data
+                let cantidad = Object.keys(data).length;
+                imagen_seleccionada =
+                    Math.floor(Math.random() * (+cantidad - +1)) + +1;
+                $.each(data, function (index, value) {
+                    console.log(value);
+                                    
+                        $('#galeria').append(' <div class="gallery_image col-md-3 col-sm-4 "><figure ><a href="../acuario/pescadosjpg/'+value+'"><img alt="picture" src="../acuario/pescadosjpg/'+value+'" class="img-fluid mask pattern-8" height="50px"></a></figure></div> ');
+                        
+
+                });
+                console.log(data[imagen_seleccionada]);
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>
