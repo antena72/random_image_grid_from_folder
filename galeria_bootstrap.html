@@ -38,22 +38,15 @@
 
     <script>
         $(document).ready(function () {
-
-
+            
             $.getJSON("inc_lee_carpeta.php", function (data) {
                 
-                //buscar cantidad de items en data
-                let cantidad = Object.keys(data).length;
-                imagen_seleccionada =
-                    Math.floor(Math.random() * (+cantidad - +1)) + +1;
+                //agrega a la galeria todas las imagenes obtenidas
                 $.each(data, function (index, value) {
-                    console.log(value);
-                                    
                         $('#galeria').append(' <div class="gallery_image col-md-3 col-sm-4 "><figure ><a href="../acuario/pescadosjpg/'+value+'"><img alt="picture" src="../acuario/pescadosjpg/'+value+'" class="img-fluid mask pattern-8" height="50px"></a></figure></div> ');
-                        
-
+              
                 });
-                console.log(data[imagen_seleccionada]);
+              
             });
 
 
