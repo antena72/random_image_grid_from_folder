@@ -1,20 +1,18 @@
 <?php
-// $carpeta_seleccionada = 'nombre de la carpeta';
-$carpeta_seleccionada = 'pescadosjpg';
+$carpeta_seleccionada = 'nombre de la carpeta';
 $lista_imagenes = array();
 
 function lista_archivos($carpeta){
     global $lista_imagenes;
     $extensiones = array('jpg', 'jpeg', 'png', 'gif', 'bmp');
-    //$carpeta = __DIR__ ."/".$carpeta."/";
-    $carpeta = "../acuario/pescadosjpg/";
+    $carpeta = __DIR__ ."/".$carpeta."/";
     //lee los archivos de la carpeta
     $archivos = scandir($carpeta);
     //pasar todo a minusculas
     $archivos = array_map('strtolower', $archivos);
     //itera los elementos de la carpeta y sólo pone en el array las imágenes
     for ($i=0; $i < count($archivos); $i++) { 
-        if ($archivos[$i] != '.' && $archivos[$i] != '..' && $archivos[$i] != 'anchoita.png') {
+        if ($archivos[$i] != '.' && $archivos[$i] != '..') {
            $archivo = pathinfo($archivos[$i]);
            $extension = $archivo['extension'];
            if (in_array($extension, $extensiones)) {
